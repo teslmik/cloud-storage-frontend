@@ -1,4 +1,4 @@
-import axios, { InternalAxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { parseCookies } from 'nookies';
 
 axios.defaults.baseURL = 'http://localhost:4000/';

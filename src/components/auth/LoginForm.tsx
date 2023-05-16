@@ -13,7 +13,7 @@ const LoginForm: React.FC = () => {
       const { token } = await Api.auth.login(values);
 
       notification.success({
-        message: "Successfully",
+        message: 'Successfully',
         description: 'Go to admin panel...',
         duration: 2,
       });
@@ -21,6 +21,8 @@ const LoginForm: React.FC = () => {
       setCookie(null, '_token', token, {
         path: '/',
       });
+
+      location.href = '/dashboard';
     } catch (error) {
       console.warn('LoginForm', error);
 
@@ -28,7 +30,7 @@ const LoginForm: React.FC = () => {
         message: 'Error',
         description: 'Invalid login or password',
         duration: 2,
-      })
+      });
     }
   };
 
