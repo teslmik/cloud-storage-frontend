@@ -14,16 +14,18 @@ interface FileListProps {
 }
 
 export const FileList: React.FC<FileListProps> = ({ items, onFileSelect }) => {
+  const fileRef = React.useRef(null);
+
   return (
     <div className={styles.root}>
       {items.map((item) => (
-        <div data-id={item.id} key={item.id} className="file">
+        <div ref={fileRef} data-id={item.id} key={item.id} className="file">
           <FileCard filename={item.filename} originalName={item.originalName} />
         </div>
       ))}
 
       <Selecto
-        container={document.body}
+        container={fileRef.current}
         selectableTargets={['.file']}
         selectByClick
         hitRate={10}
