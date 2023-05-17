@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { parseCookies } from 'nookies';
 
-axios.defaults.baseURL = process.env.API_URL;
+axios.defaults.baseURL = 'https://cloud-storage-goj0.onrender.com/';
 
 axios.interceptors.request.use((config) => {
   if (typeof window !== 'undefined') {

@@ -16,7 +16,7 @@ const FileCard: React.FC<FileCardProps> = ({ filename, originalName }) => {
   const ext = getExtentionFromFileName(filename);
   const imageUlr =
     ext && isImage(ext)
-      ? (process.env.API_URL + 'uploads/' || 'http://localhost:4000/uploads/') + filename
+      ? 'https://cloud-storage-goj0.onrender.com/uploads/' + filename
       : '';
   const color = getColorByExtention(ext);
   const classColor = styles[color];
