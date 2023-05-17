@@ -17,8 +17,8 @@ export const UploadButton: React.FC = () => {
       window.location.reload();
     } catch (err) {
       notification.error({
-        message: 'Ошибка!',
-        description: 'Не удалось загрузить файл',
+        message: 'Error!',
+        description: 'Failed to upload file...',
         duration: 2,
       });
     }
@@ -31,7 +31,7 @@ export const UploadButton: React.FC = () => {
       onChange={({ fileList }) => setFileList(fileList)}
       className={styles.upload}>
       <Button type="primary" icon={<CloudUploadOutlined />} size="large">
-        Загрузить файл
+        Upload file
       </Button>
     </Upload>
   );

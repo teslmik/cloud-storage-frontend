@@ -23,19 +23,19 @@ export const DashboardLayout: React.FC<React.PropsWithChildren> = ({ children })
             {
               key: `/dashboard`,
               icon: <FileOutlined />,
-              label: `Файлы`,
+              label: `Files`,
               onClick: () => router.push('/dashboard'),
             },
             {
               key: `/dashboard/photos`,
               icon: <FileImageOutlined />,
-              label: `Фото`,
+              label: `Photos`,
               onClick: () => router.push('/dashboard/photos'),
             },
             {
               key: `/dashboard/trash`,
               icon: <DeleteOutlined />,
-              label: `Корзина`,
+              label: `Trash`,
               onClick: () => router.push('/dashboard/trash'),
             },
           ]}

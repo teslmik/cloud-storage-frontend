@@ -17,19 +17,19 @@ export const FileActions: React.FC<FileActionsProps> = ({
   return (
     <div className={styles.root}>
       <Button onClick={onClickShare} disabled={!isActive}>
-        Поделиться
+        Share
       </Button>
 
       <Popconfirm
-        title="Удалить файл(ы)?"
-        description="Все файлы будут перемещены в корзину"
-        okText="Да"
-        cancelText="Нет"
+        title="Delete file(s)?"
+        description="All files will be moved to trash"
+        okText="Yes"
+        cancelText="No"
         disabled={!isActive}
         onConfirm={onClickRemove}
       >
         <Button disabled={!isActive} type="primary" danger>
-          Удалить
+          Delete
         </Button>
       </Popconfirm>
     </div>
