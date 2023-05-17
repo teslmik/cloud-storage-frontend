@@ -20,6 +20,7 @@ const DashboardPage: NextPage<Props> = ({ items }) => {
   );
 };
 
+// @ts-ignore: Unreachable code error
 DashboardPage.getLayout = (page: React.ReactNode) => {
   return <Layout title="Dashboard / Главная">{page}</Layout>;
 };

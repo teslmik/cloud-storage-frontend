@@ -20,6 +20,7 @@ const DashboardPhotos: NextPage<Props> = ({ items }) => {
   );
 };
 
+// @ts-ignore: Unreachable code error
 DashboardPhotos.getLayout = (page: React.ReactNode) => {
   return <Layout title="Dashboard / Фотографии">{page}</Layout>;
 };

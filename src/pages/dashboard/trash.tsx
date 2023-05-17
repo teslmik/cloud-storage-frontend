@@ -20,6 +20,7 @@ const DashboardTrash: NextPage<Props> = ({ items }) => {
   );
 };
 
+// @ts-ignore: Unreachable code error
 DashboardTrash.getLayout = (page: React.ReactNode) => {
   return <Layout title="Dashboard / Корзина">{page}</Layout>;
 };

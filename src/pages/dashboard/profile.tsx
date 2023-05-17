@@ -43,6 +43,7 @@ const DashboardProfilePage: NextPage<Props> = ({ userData }) => {
   );
 };
 
+// @ts-ignore: Unreachable code error
 DashboardProfilePage.getLayout = (page: React.ReactNode) => {
   return <Layout title={'Dashboard / Profile'}>{page}</Layout>;
 };
