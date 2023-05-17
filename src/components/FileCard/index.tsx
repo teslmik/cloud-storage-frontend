@@ -23,6 +23,7 @@ const FileCard: React.FC<FileCardProps> = ({ filename, originalName }) => {
       <div className={styles.icon}>
         <i className={classColor}>{ext}</i>
         {isImage(ext) ? (
+          // eslint-disable-next-line @next/next/no-img-element
           <img className={styles.image} src={imageUlr} alt="File" />
         ) : (
           <FileTextOutlined />
