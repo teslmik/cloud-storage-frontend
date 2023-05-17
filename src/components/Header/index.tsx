@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   const onClickLogout = () => {
     if (window.confirm('Do you really want to leave?')) {
       Api.auth.logout();
-      location.href = '/';
+      location.href = '/dashboard';
     }
   };
 
