@@ -6,6 +6,7 @@ import * as Api from "@/api";
 
 import styles from "@/styles/Profile.module.scss";
 import { checkAuth } from '@/helpers/checkAuth';
+import { Layout } from '@/layouts/Layout';
 
 interface Props {
   userData: User;
@@ -13,7 +14,10 @@ interface Props {
 
 const DashboardProfilePage: NextPage<Props> = ({ userData }) => {
   const onClickLogout = () => {
-
+    if (window.confirm('Are you sure you want to logout?')) {
+      Api.auth.logout();
+      location.href = '/';
+    }
   };
 
   return (
@@ -37,6 +41,10 @@ const DashboardProfilePage: NextPage<Props> = ({ userData }) => {
       </div>
     </main>
   );
+};
+
+DashboardProfilePage.getLayout = (page: React.ReactNode) => {
+  return <Layout title={'Dashboard / Profile'}>{page}</Layout>;
 };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
