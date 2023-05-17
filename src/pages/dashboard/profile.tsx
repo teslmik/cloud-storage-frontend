@@ -16,7 +16,7 @@ const DashboardProfilePage: NextPage<Props> = ({ userData }) => {
   const onClickLogout = () => {
     if (window.confirm('Are you sure you want to logout?')) {
       Api.auth.logout();
-      location.href = '/';
+      location.href = '/dashboard/auth';
     }
   };
 
