@@ -1,69 +1,50 @@
-import { GetServerSidePropsContext, NextPage } from 'next';
+import { GetServerSidePropsContext, NextPage } from "next";
+import React from "react";
 
-import { checkAuth } from '@/helpers/checkAuth';
-import { Layout } from '@/layouts/Layout';
+import * as Api from "@/api";
+import { checkAuth } from "@/helpers/checkAuth";
+import { FileItem } from "@/api/dto/files.dto";
+import { DashboardLayout } from "@/layouts/DashboardLayout";
+import { Layout } from "@/layouts/Layout";
+import { Files } from "@/modules/Files";
 
-import styles from '@/styles/Home.module.scss';
-import { Button, Menu } from 'antd';
-import { useRouter } from 'next/router';
-import { DeleteOutlined, FileImageOutlined, FileOutlined } from '@ant-design/icons';
-import { UploadButton } from '@/components/UploadButton';
+interface Props {
+  items: FileItem[];
+}
 
-const DashboardPage: NextPage = () => {
-  const router = useRouter();
-  const selectedMenu = router.pathname;
-
+const DashboardPage: NextPage<Props> = ({ items }) => {
   return (
-    <main className={styles.dashboardContainer}>
-      <div className={styles.sidebar}>
-        <UploadButton />
-        <Menu
-          className={styles.menu}
-          mode="inline"
-          selectedKeys={[selectedMenu]}
-          items={[
-            {
-              key: '/dashboard',
-              icon: <FileOutlined />,
-              label: 'Files',
-              onClick: () => router.push('/dashboard'),
-            },
-            {
-              key: '/dashboard/photos',
-              icon: <FileImageOutlined />,
-              label: 'Photos',
-              onClick: () => router.push('/dashboard/photos'),
-            },
-            {
-              key: '/dashboard/trash',
-              icon: <DeleteOutlined />,
-              label: 'Trash',
-              onClick: () => router.push('/dashboard/trash'),
-            },
-          ]}
-        />
-      </div>
-      <div className="container">
-        <h1>Files</h1>
-      </div>
-    </main>
+    <DashboardLayout>
+      <Files items={items} withActions />
+    </DashboardLayout>
   );
 };
 
 DashboardPage.getLayout = (page: React.ReactNode) => {
-  return <Layout title={'Dashboard / Main'}>{page}</Layout>;
+  return <Layout title="Dashboard / Главная">{page}</Layout>;
 };
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const authProps = await checkAuth(ctx);
 
-  // if ('redirect' in authProps) {
-  //   return authProps;
-  // }
+  if ("redirect" in authProps) {
+    return authProps;
+  }
 
-  return {
-    props: {},
-  };
+  try {
+    const items = await Api.files.getAll();
+
+    return {
+      props: {
+        items,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+    return {
+      props: { items: [] },
+    };
+  }
 };
 
 export default DashboardPage;

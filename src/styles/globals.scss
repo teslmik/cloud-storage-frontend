@@ -2,7 +2,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Segoe UI";
+  font-family: 'Segoe UI';
 }
 
 html,
@@ -19,6 +19,7 @@ a {
 
 .container {
   width: 100%;
+  flex: 1 1 auto;
 }
 
 .file {
@@ -26,6 +27,7 @@ a {
   margin-bottom: 15px;
   border: 2px solid transparent;
   border-radius: 10px;
+  flex: 0 0 auto;
 }
 
 .file.active {

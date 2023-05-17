@@ -50,9 +50,9 @@ DashboardProfilePage.getLayout = (page: React.ReactNode) => {
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
   const authProps = await checkAuth(ctx);
 
-  // if ('redirect' in authProps) {
-  //   return authProps;
-  // }
+  if ('redirect' in authProps) {
+    return authProps;
+  }
 
   const userData = await Api.auth.getMe();
 

@@ -16,12 +16,12 @@ const checkAuth = async (ctx: GetServerSidePropsContext) => {
       props: {},
     };
   } catch (error) {
-    // return {
-    //   redirect: {
-    //     destination: '/dashboard/auth',
-    //     permanent: false,
-    //   },
-    // };
+    return {
+      redirect: {
+        destination: '/dashboard/auth',
+        permanent: false,
+      },
+    };
   }
 };
 
